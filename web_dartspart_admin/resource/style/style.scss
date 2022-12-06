@@ -1,0 +1,377 @@
+@charset "utf-8";
+// style.scss
+
+// mixin ///////////////////////////////
+@mixin flex($justify, $align){ display: flex !important; justify-content: $justify; align-items: $align; }
+@mixin textAlign($align){ text-align: $align; }
+@mixin tranXY($x,$y){ transform: translate($x, $y); }
+@mixin titStyle($size,$weight) { font-size:$size; font-weight:$weight; color:$color_main; }
+
+// $변수선언 ///////////////////////////////
+$color_main:#395e95;
+$color_wht: #fff;
+
+// layout ///////////////////////////////
+body{
+    overflow: auto;
+    &.on{ overflow: hidden; }
+    #wrap{ position:relative; width:100%;
+        #container{ margin-left:22rem; padding:2.4rem 4.8rem;
+            .stn{ width:100%; min-width:130rem; }
+        }
+    }
+}
+
+// common ///////////////////////////////
+.blind{ overflow: hidden; position: absolute; width: 1px; height: 1px; margin-top: -1px; border: 0; font-size: 1px; clip: rect(0, 0, 0, 0); z-index: -1; }
+.ellipsis{ display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tac{ @include textAlign(center); }
+.tal{ @include textAlign(left); }
+.tar{ @include textAlign(right); }
+.flex{ @include flex(auto, auto); }
+.flex_center{ @include flex(auto, center); }
+.flex_justify{ @include flex(center, center); }
+.flex_between{ @include flex(space-between, center); }
+.stn_main_tit{ padding-bottom:2rem; @include titStyle(2.2rem,800); }
+.stn_sub_tit{ padding-bottom:2rem; @include titStyle(1.8rem,600); }
+.color_main{ color:$color_main; }
+strong{ font-weight: 800; }
+
+
+// .gnb
+.gnb{
+    position:fixed;
+    top:0; left:0;
+    width:22rem; height:100vh;
+    border-right:1px solid #d2dded;
+    background-color:#eef2f9;
+    z-index: 50;
+    &__logo{
+        width:100%;
+        padding:1.6rem 0;
+        background-color:$color_wht;
+        img{ width:16rem; margin:0 auto; }
+    }
+    &__desc{
+        padding:3rem 1rem;
+        background-color:$color_main;
+        font-size:1.4rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color:$color_wht;
+        @include textAlign(center);
+        h2{ font-size:1.8rem; }
+    }
+    &__menu{
+        li{
+            position:relative;
+            background-color:#f5f9fe;
+            color:#6f8ab1;
+            transition:background-color 0.5s;
+            &.on{
+                background-color:$color_wht;
+                color:$color_main;
+            }
+            &:hover{
+                background-color:$color_wht;
+                a{ letter-spacing: 2px; }
+                .ico_arrow{ right:2rem; }
+            }
+            a{
+                display:block;
+                width:100%;
+                padding:1.6rem 2.4rem;
+                border-bottom:1px solid #d2dded;
+                font-weight:800;
+                transition:letter-spacing 0.5s;
+            }
+            .ico_arrow{
+                position:absolute;
+                top:50%; right:2.4rem;
+                width:1.6rem; height:auto;
+                pointer-events: none;
+                transition:right 0.5s;
+                @include tranXY(0,-50%);
+            }
+        }
+    }
+    &__footer{
+        position:absolute;
+        bottom:1rem; left:50%;
+        width:100%;
+        @include tranXY(-50%,0);
+        button{
+            display:block;
+            width:calc(100% - 20px);
+            margin:0 auto; padding:1rem 2rem;
+            border:1px solid $color_main;
+            border-radius: 0.4rem;
+            background-color:$color_main;
+            font-size:1.6rem;
+            font-weight: bold;
+            color:$color_wht;
+            transition:background-color 0.2s, color 0.2s;
+            &:hover{
+                border:1px solid $color_main;
+                background-color:$color_wht;
+                color:$color_main;
+            }
+        }
+    }
+}
+
+// .modal
+.modal{
+    position:fixed;
+    top:0; left:0; 
+    width:100vw; height:100vh; 
+    background-color:#0008;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    opacity:0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 100;
+    &.on{ opacity:1; pointer-events: all; }
+    &.on &__wrap{  @include tranXY(-50%,-50%); }
+    &__wrap{
+        position:absolute;
+        top:50%; left:50%;
+        width:30rem; height:auto;
+        padding:8rem 2.8rem;
+        border-radius: 2rem;
+        box-shadow: 0 0 4rem #0005;
+        background-color:$color_wht;
+        text-align: center;
+        transition: transform 0.2s;
+        @include tranXY(-50%,-40%);
+        img{
+            display:inline-block;
+            width:3rem; height:auto;
+            margin-bottom:2rem;
+        }
+        &--btn{ gap:0.6rem; padding-top:6rem; }
+        button, a{
+            padding:1rem 2.8rem;
+            border:1px solid $color_main;
+            border-radius: 0.4rem;
+            background-color:$color_wht;
+            font-weight: bold;
+            color:$color_main;
+            &.btn_submit{ background-color: $color_main; color:$color_wht;
+            }
+        }
+    }
+}
+
+// 공통 table style
+table{
+    width:100%;
+    font-size:1.3rem;
+    thead{
+        background-color:#eef4fd;
+        tr{
+            th{
+                padding:2rem 0.4rem;
+                font-weight: 800;
+                @include textAlign(center);
+                .chk_all{
+                    &:checked + label{
+                        background:url("../image/ico_checked.svg") center no-repeat;
+                        background-size:cover;
+                    }
+                }
+                label{
+                    background:url("../image/ico_unchecked.svg") center no-repeat;
+                    background-size:cover;
+                }
+            }
+        }
+    }
+    tbody{
+        tr{ border-bottom:1px solid #dee6f3;
+            &:hover{ background-color:#f7faff; }
+            td{
+                padding:1.8rem 0.8rem; @include textAlign(center);
+                label{
+                    background:url("../image/ico_unchecked.svg") center no-repeat;
+                    background-size:cover;
+                    &.checked{
+                        background:url("../image/ico_checked.svg") center no-repeat;
+                        background-size:cover;
+                    }
+                }
+            }
+        }
+    }
+    label{
+        display:inline-block;
+        width:1.8rem; height:1.8rem;
+    }
+    input[type="checkbox"]{ display:none; }
+}
+
+.btn_cplt{
+    display:block;
+    margin-top:1.2rem; padding:1rem 2.8rem;
+    border:1px solid $color_main;
+    border-radius: 0.4rem;
+    background-color:$color_main;
+    font-size:1.6rem;
+    font-weight: 600;
+    color:#fff;
+    transition: filter 0.2s, opacity 0.2s, box-shadow 0.2s, transform 0.2s;
+    &:enabled:hover{
+        box-shadow: 3px 3px 6px #0002;
+        opacity:0.8;
+        transform:translateY(-0.2rem);
+    }
+    &:disabled{
+        filter: grayscale(0.7);
+        opacity:0.4;
+        cursor: default;
+    }
+}
+
+// go top scroll button
+aside.btn_top{
+    position:fixed;
+    right:1.2rem;
+    bottom:1.8rem;
+    width:4rem; height:4rem;
+    padding:1rem;
+    border-radius: 0.4rem;
+    background-color:#395e95;
+    opacity: 0;
+    cursor: pointer;
+    pointer-events: none;
+    transition: opacity 0.5s, transform 0.2s;
+    z-index:5;
+    &.on{
+        opacity:1;
+        pointer-events: all;
+        &:hover{ transform: scale(1.05); }
+    }
+}
+
+// pagenation custom style
+.tui-pagination{
+    margin-top:2.8rem;
+    .tui-is-selected{
+        border-color:$color_main;
+        background-color:$color_main;
+        &:hover{ background-color:#4b72ac; }
+    }
+    .tui-first,
+    .tui-prev,
+    .tui-next,
+    .tui-last,
+    .tui-prev-is-ellip,
+    .tui-next-is-ellip{ height:2.8rem; }
+    strong{ border-color:$color_main; background-color:$color_main; }
+}
+
+// data range pickter custom style
+.daterange{
+    .tui-datepicker{ border-color:$color_main; }
+    .tui-calendar{
+        .tui-calendar-header{ border-color:#d2dded; }
+        .tui-calendar-title-today{ display:none; }
+        .tui-calendar-body{ padding-top:1.6rem; }
+    }
+    .tui-datepicker-input{
+        width:12rem !important;
+        > input{ text-align: center; }
+        &.tui-has-focus{ margin-bottom:1px; border-color:$color_main; }
+    }
+    &.on{
+        .tui-datepicker-input{
+            .tui-has-focus{ background-color:$color_main; }
+            > input{ color:$color_wht !important; }
+        }
+        .tui-ico-date,
+        .tui-ico-time,
+        .tui-datepicker-dropdown .tui-ico-check,
+        .tui-ico-caret{ background-position: center top; }
+    }
+}
+
+.custom_select{
+    display:flex;
+    position:relative;
+    justify-content: center;
+    gap:0.5rem;
+    select{ display:none; }
+    .custom_ui{
+        position:relative;
+        width:18rem; height:3.8rem;
+        .category{
+            display:flex;
+            position:relative;
+            align-items:center;
+            width:100%; height:100%;
+            padding:1rem 2rem;
+            border:1px solid #4b72ac;
+            background-color:#fff;
+            color:#999;
+            cursor:pointer;
+            z-index:3;
+            &.off{ color:#000; }
+            &::after{
+                content:"";
+                position:absolute;
+                top:50%; right:10px;
+                width:1.8rem; height:1.8rem;
+                background:url("../image/ico_angle.svg") center no-repeat;
+                background-size:cover;
+                transform: translateY(-50%) rotate(180deg);
+                transition:transform 0.3s;
+            }
+        }
+        ul{
+            overflow: hidden;
+            position:absolute;
+            top:3.7rem; left:0;
+            width:100%; height:0%;
+            border:1px solid #4b72ac;
+            border-top:0px;
+            cursor:pointer;
+            transition:height 0.3s;
+            z-index: 2;
+            li{
+                display:flex;
+                align-items:center;
+                width:100%; height:3.8rem;
+                padding:1rem 2rem;
+                background-color:#fff;
+                &:hover{ background-color:#f5f9fe; }
+            }
+        }
+    }
+    &.on{
+        ul{
+            overflow-y: scroll;
+            height:350%;
+        }
+        .category::after{ transform: translateY(-50%) rotate(0deg); }
+    }
+    .select_default{ color:#999; }
+    .search_area{
+        position: relative;
+        input[type="text"]{
+            display:block;
+            width:28rem; height:3.8rem;
+            padding:1rem 3.8rem 1rem 2rem;
+            border:1px solid #4b72ac;
+            &::placeholder{ font-size:1.6rem; color:#999; }
+        }
+        button{
+            position:absolute;
+            top:50%; right:0;
+            width:3.8rem; height:3.8rem;
+            padding:1rem;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+    }
+}

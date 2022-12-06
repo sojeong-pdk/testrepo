@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+    <meta name="theme-color" content="#fff"/>
+    <link rel="shortcut icon" href="https://www.phoenixdarts.com//ico.ico?v=1.0">
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css" />
+    <link rel="stylesheet" href="./resource/style/reset.css">
+    <link rel="stylesheet" href="./resource/style/style.css">
+    <script src="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.js"></script>
+    <script src="./resource/js/common.js"></script>
+</head>
+<body>
+    <!-- Modal Area -->
+    <!-- 로그아웃 모달 -->
+    <div class="modal logout">
+        <div class="modal__wrap">
+            <img src="./resource/image/ico_check_message.svg" alt="알림창 메세지 아이콘">
+            <p><strong class="color_main">로그아웃</strong>하시겠습니까?</p>
+            <form class="modal__wrap--btn flex_justify">
+                <!-- [D] 로그아웃 버튼 -->
+                <button type="submit" class="btn_submit">확인</button>
+                <button type="button" class="btn_cancle">취소</button>
+            </form>
+        </div>
+    </div>
+    <!-- //Modal Area -->
+
+    <!-- #wrap -->
+    <div id="wrap">
+        <!-- #header -->
+        <header id="header" data-include="./inc.html" data-menu="sub01"></header>
+        <aside class="btn_top" data-include="./inc_aside.html"></aside>
+        <!-- //#header -->
+        <!-- #container -->
+        <div id="container">
+            <div class="stn">
+                <h3 class="stn_main_tit">테스트 페이지 - 추후 삭제요망</h3>
+                <form class="custom_select">
+                    <!-- [D] 실제 select tag -->
+                    <select>
+                        <option value="부품 코드 선택">부품 코드 선택</option>
+                        <option value="X01daM">X01daM</option>
+                        <option value="X2234K">X2234K</option>
+                        <option value="Z001DL">Z001DL</option>
+                        <option value="AD001K">AD001K</option>
+                    </select>
+                    <!--
+                        [D]
+                        select tag와 연동된 UI 컴포넌트입니다.
+                        select opation 요소가 추가될 때 아래 UI 컴포넌트도 추가되어야 합니다.
+                    -->
+                    <div class="custom_ui">
+                        <p class="category">부품 코드 선택</p>
+                        <ul>
+                            <li class="select_default" data-value="부품 코드 선택">부품 코드 선택</li>
+                            <li data-value="X01daM">X01daM</li>
+                            <li data-value="X2234K">X2234K</li>
+                            <li data-value="Z001DL">Z001DL</li>
+                            <li data-value="AD001K">AD001K</li>
+                        </ul>
+                    </div>
+                    <div class="search_area">
+                        <input type="text" placeholder="검색어를 입력해주세요." required>
+                        <button type="submit">
+                            <img src="./resource/image/ico_search.svg" alt="돋보기 이미지">
+                        </button>
+                    </div>
+                </form>
+
+                <!-- [D] pagenation : 페이지네이션 개발 필요 (nhn toast ui 사용) -->
+                <div id="pagination" class="tui-pagination"></div>
+            </div>
+        </div>
+        <!-- //#container -->
+    </div>
+    <!-- //#wrap -->
+
+    <!-- script -->
+    <script>
+        // pagination
+        const pagination = new tui.Pagination('pagination', {
+            totalItems: 500,
+            itemsPerPage: 10,
+            visiblePages: 5
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<link rel="shortcut icon" href="https://www.phoenixdarts.com//ico.ico?v=1.0">
+<!-- Cache reset -->
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- icon_favicon -->
+<!-- <link rel="shortcut icon" type="image/x-icon" href="resources/images/ico_favicon_60x60.png"> -->
+<!-- 윈도우즈 사이트 아이콘, HiDPI/Retina 에서 Safari 나중에 읽기 사이드바 -->
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
+<!-- //css -->
+<!--[if lte IE 9]>
+<script src="resources/js/html5shiv.min.js"></script>
+<script src="resources/js/respond.min.js"></script>
+
+<div class="lyrWrap">
+    <div class="lyr_bg ie9"></div>
+        <div class="lyrBox">
+            <div class="lyr_top">
+                <h3>브라우저 업데이트 안내</h3>
+            </div>
+            <div class="lyr_mid">
+                <div class="legacy-browser">
+현재 사용중인 브라우저는 지원이 중단된 브라우저입니다.<br>
+원활한 온라인 서비스를 위해 브라우저를 <a href="http://windows.microsoft.com/ko-kr/internet-explorer/ie-11-worldwide-languages" target="_blank">최신 버전</a>으로 업그레이드 해주세요.
+                </div>
+            </div>
+            <div class="lyr_btm">
+                <div class="btnBox sz_small">
+                    <button class="btn_win_close">창 닫기</button>
+                </div>
+            </div>
+        </div>
+</div>
+<![endif]-->
+<style>
+	@charset "utf-8";
+	/* PHOENIXDARTS. PSH. 2022.11.24 */
+	
+	* {font-family:"Pretendard", sans-serif; -webkit-font-smoothing:antialiased; font-smooth:antialiased; box-sizing: border-box;}
+	html,body {margin:0; padding:0; width:100%; height:100%; font-family:"Pretendard", sans-serif; font-size:12px; font-weight: 700; color:#122d3e; line-height:18px; background:none; -webkit-font-smoothing:antialiased; font-smooth:antialiased;}
+	div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,legend,em,span {margin:0; padding:0; font-family:"Pretendard", sans-serif;}
+	strong{ font-weight: 800; color:#008ad8; }
+	table {border-spacing:0; border-collapse:collapse; font-family:"Pretendard", sans-serif;}
+	th, td {word-break:break-all;}
+	form,fieldset {display:block;}
+	form,fieldset,img {border:none;}
+	address,caption,cite,code,dfn,em,th,var {font-style:normal; font-weight:normal;}
+	ol,ul,li {list-style:none;}
+	abbr,acronym {border:none;}
+	hr {display:none;}
+	a {text-decoration:none; color:#122d3e; cursor:pointer; font-family:"Pretendard", sans-serif;}
+	a:link,a:visited {text-decoration:none;}
+	a:hover,a:active,a:focus {color:#122d3e; text-decoration:none;}
+	textarea {overflow:auto; resize:none;}
+	option {padding-right:6px;} /* firefox fix */
+	legend {position:absolute; top:0; left:0; width:0; height:0; overflow:hidden; visibility:hidden; font-size:0; line-height:0;} /* for screen reader */
+	pre {word-wrap:break-word;}
+	label {font-family:"Pretendard", sans-serif;}
+	h1,h2,h3,h4,h5,h6 {font-family:"Pretendard", sans-serif;}
+	br {background:none !important;}
+	img {vertical-align:top;}
+	a:focus, input:focus, textarea:focus, button:focus {outline:none !important;}
+	button {border:none; background:transparent; cursor:pointer;}
+
+	.al_c {text-align:center !important;}
+	.hide {overflow:hidden; position:absolute; top:0; left:0; width:0; height:0; margin:0; padding:0; line-height:0;}
+
+	/* wrap */
+	#wrap {position:relative; width:100%; min-width:1500px; height:100%;}
+	#wrap:before {content:''; position:absolute; top:0; left:0; width:100%; height:360px; background:linear-gradient(to bottom, #719db5, #fff);}
+
+	/* header */
+	#header {display:flex; position:relative; width:100%; height:60px; z-index:1000; transition:all 0.3s ease-out;}
+
+	#header .lot_col02 { display:flex; justify-content:space-between; width:100%; padding:0 30px; box-sizing:border-box;}
+	#header h1 {display:flex; justify-content: center; flex-direction: column;}
+	#header h1 span {display:block; color:rgba(255,255,255,0.6); font-size:14px; font-weight:normal; line-height:12px;}
+	#header h1 em {display:block; color:rgba(255,255,255,1.0); font-size:15px; font-weight:700;}
+	#header a{ display: flex; align-items: center; color:#fff;}
+
+	.nav_status {float:right; margin:15px 50px 0 0;}
+	.nav_status ul {display:block;}
+	.nav_status ul li {display:inline-block; margin:0 0 0 10px}
+	.nav_status ul li.total {padding:0 10px 0 0; border-right:1px solid rgba(0,0,0,0.1);}
+	.nav_status ul li a {display:block; overflow:hidden; position:relative; width:150px; padding:5px 0; color:rgba(255,255,255,0.7); font-size:11px; text-align:center; border-radius:5px; background:rgba(11,42,74,0.2); transition:all 0.3s ease-out;}
+	.nav_status ul li em {display:block; overflow:hidden; position:relative; width:100px; padding:5px 0; color:rgba(255,255,255,1.0); font-size:11px; text-align:center; border-radius:5px; background:rgba(11,42,74,0.2); transition:all 0.3s ease-out;}
+	.nav_status ul li span.tit {float:left; position:relative; padding:0 0 0 5px; z-index:10; font-size: 12px; font-weight: 700; letter-spacing:-1px;}
+	.nav_status ul li span.txt {float:right; position:relative; padding:0 5px 0 0; font-size: 12px; font-weight: 700; z-index:10;}
+	.nav_status ul li span.bar {position:absolute; top:0; left:0; height:100%; background:rgb(26,49,72,0.6); transition:all 0.3s ease-out;}
+
+	/* header(fixed) */
+	#header.fixed {position:fixed; top:0; background:rgba(11,42,74,0.95); transition:all 0.3s ease-out;}
+	#header.fixed .nav_status ul li.total {padding:0 10px 0 0; border-right:1px solid rgba(255,255,255,0.1);}
+	#header.fixed .nav_status ul li a {color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.1); transition:all 0.3s ease-out;}
+	#header.fixed .nav_status ul li em {color:rgba(255,255,255,1.0); background:rgba(255,255,255,0.1); transition:all 0.3s ease-out;}
+	#header.fixed .nav_status ul li span.bar {background:linear-gradient(45deg, #008ad8, #00aebc); transition:all 0.3s ease-out;}
+
+	/* container */
+	#container {position:relative; display:table; width:100%; padding:0 30px;}
+
+	/* container(contents) */
+	#contents {display:table; width:100%;}
+
+	/* section */
+	.stn {display:block; margin:0 0 20px 0;}
+	.stn .stn_tit {display:block; position:relative;}
+	.stn .stn_tit h4 {display:inline-block; color:#0b2a4a; font-size:16px; font-weight:500;}
+	.stn .stn_cont {display:block; position:relative;}
+
+	/* section(All Box Type) */
+	.stn.allBoxType {overflow:hidden; border-radius:12px; background:#274252; box-shadow:0 0 15px #0b2a4a33;}
+	.stn.allBoxType .stn_tit {display:block; clear:both; overflow: hidden; padding:10px 20px; line-height:18px; cursor:pointer;}
+	.stn.allBoxType .stn_tit:hover h4 {text-decoration:underline;}
+	.stn.allBoxType .stn_tit h4 {float:left; color:rgba(255,255,255,1.0); font-weight: 700;}
+	.stn.allBoxType .stn_tit .s_db {float:right; font-size:13px;}
+	.stn.allBoxType .stn_tit .s_db dl {display:inline-block; margin:0 15px 0 0;}
+	.stn.allBoxType .stn_tit .s_db dl:last-child {margin:0;}
+	.stn.allBoxType .stn_tit .s_db dl dt {display:inline-block; color:rgba(255,255,255,0.6); font-weight: 700;}
+	.stn.allBoxType .stn_tit .s_db dl dd {display:inline-block; color:rgba(255,255,255,1.0); font-weight: 700;}
+	.stn.allBoxType .stn_cont {display:block; padding:30px; background: #fff;}
+
+	.stn.allBoxType.close .stn_cont {display:none;}
+	.stn.allBoxType .stn_header{ padding:12px 30px; color:#fff; }
+
+	/* table */
+	.tbl_lineType {width:100%; table-layout:fixed;}
+	.tbl_lineType thead th {padding:7px 5px; background-color:#eef3f8; color:rgba(11,42,74,0.6); font-size:14px; font-weight:800; text-align:center; vertical-align:middle; letter-spacing:-1px; border-top:2px solid rgba(11,42,74,0.6); border-bottom:2px solid rgba(11,42,74,0.6);}
+	.tbl_lineType tbody{ border-bottom:2px solid rgba(11,42,74,0.6); }
+	.tbl_lineType tbody td {padding:8px; color:rgba(11,42,74,0.6); font-size:13px; text-align:left; vertical-align:middle; letter-spacing:-0.1px; border:1px solid #ddd; word-break:keep-all; background:#fff;}
+	.tbl_lineType tbody tr td:first-child {border-left:none;}
+	.tbl_lineType tbody tr td:last-child {border-right:none;}
+	.tbl_lineType tbody {counter-reset:tblNum;}
+	.tbl_lineType tbody tr td:first-child:before {counter-increment:tblNum; content:counter(tblNum);}
+	.tbl_lineType tbody tr td a {color:#203440;}
+	.tbl_lineType tbody tr td a:hover, .tbl_lineType tbody tr td a:focus {text-decoration:underline;}
+	.tbl_lineType tbody tr td img {display:inline-block; margin:0 0 0 5px; vertical-align:middle;}
+	.tbl_lineType td.col_num, .tbl_lineType td.col_point, .tbl_lineType td.col_date, .tbl_lineType td.col_state, .tbl_lineType td.col_worker {text-align:center;}
+	.tbl_lineType tbody tr td span {display:inline-block; width:100%; padding:6px 0; color:#fff; font-size:11px; line-height:1.2 !important; text-align:center; line-height:10px; border-radius:5px;}
+	.tbl_lineType tbody tr td span.stand {color:rgba(11,42,74,1.0); background:rgba(11,42,74,0.1);}
+	.tbl_lineType tbody tr td span.working {background:#42a828;}
+	.tbl_lineType tbody tr td span.complete {background:#008ad8;}
+	.tbl_lineType tbody tr td span.modify {background:#da3030;}
+
+	/* TOP Button */
+	.btn_top{ display:flex; justify-content: center; align-items: center; position:fixed; right:18px; bottom:18px; width:40px; height:40px; padding:10px; border-radius:4px; background-color:#274252; color:#fff; font-size:12px; opacity: 0; cursor: pointer; pointer-events: none; transition: opacity 0.5s, transform 0.2s; z-index:100; }
+	.btn_top.on{ opacity:1; pointer-events: all; }
+	.btn_top.on:hover{ transform: scale(1.05); }
+
+	/* footer */
+	#footer {display:block; position:relative; height:19px; font-size:11px; text-align:center; border-top:1px solid #eef1f7; background:#fff;}
+</style>
+<title>FILE LIST</title>
+</head>
+
+<body>
+<!-- #wrap -->
+<div id="wrap">
+	<!-- #header -->
+	<div id="header">
+		<div class="lot_col02">
+			<h1>
+				<span>웹 퍼블리싱 파일리스트</span>
+				<em style="margin-top:4px;">피닉스다트 다트 부품 관리자페이지</em>
+			</h1>
+            <!-- <a href="./list.html">파일 다운로드</a> -->
+		</div>
+	</div>
+	<!-- //#header -->
+
+	<hr>
+
+	<!-- #container -->
+	<div id="container">
+		<!-- #contents -->
+		<div id="contents">
+			<!-- .section -->
+			<div class="stn allBoxType">
+				<!-- .stn_cont -->
+				<div class="stn_header" style="display:flex; justify-content:space-between;">
+					<p style="font-size:20px;">Admin Page</p>
+					<div style="display:flex; gap:10px; color:rgba(255,255,255,0.7)">
+						<p>페이지 : <span class="num_pages" style="color:#fff;">1</span></p>
+						<p>완료 : <span class="cmp_pages" style="color:#fff;">0</span></p>
+						<p>달성률 : <span class="perc_pages" style="color:#fff;"></span></p>
+						<script>
+							// 달성률 자동계산 스크립트
+							window.addEventListener("load",()=>{
+								const elPages = document.querySelector(".num_pages");
+								const elComp = document.querySelector(".cmp_pages");
+								const elPerc = document.querySelector(".perc_pages");
+								let compPerc = 100 / elPages.innerHTML * elComp.innerHTML;
+								elPerc.innerHTML = `${compPerc}%`;
+							})
+						</script>
+					</div>
+				</div>
+				<div class="stn_cont">
+					<table class="tbl_lineType">
+						<caption class="hide">퍼블리싱 리스트</caption>
+						<colgroup>
+							<col width="3%">
+							<col width="7%">
+							<col width="14%">
+							<col width="14%">
+							<col width="6%">
+							<col width="6%">
+							<col width="4%">
+							<col width="4%">
+							<col width="42%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">번호</th>
+								<th scope="col">1Depth</th>
+								<th scope="col">2Depth</th>
+								<th scope="col">URL</th>
+                                <th scope="col">시작 일자</th>
+								<th scope="col">완료 일자</th>
+								<th scope="col">상태</th>
+								<th scope="col">담당자</th>
+								<th scope="col">비고</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- HTML -->
+                            <tr>
+								<td class="col_num" scope="row"></td>
+								<td class="col_1depth">HTML</td>
+								<td class="col_2depth">인덱스</td>
+								<td class="col_url"><a href="./index.html" target="_blank">./index.html</a></td>
+                                <td class="col_point">2022.11.24</td>
+								<td class="col_date"></td>
+								<td class="col_state">
+									<span class="working">작업중</span>
+									<!-- [D] 상태별 클래스명 stand:대기, working:작업중, complete:완료 modify:수정 -->
+								</td>
+								<td class="col_worker">박선후</td>
+								<td class="col_memo"></td>
+							</tr>
+                            <tr>
+								<td class="col_num" scope="row"></td>
+								<td class="col_1depth"></td>
+								<td class="col_2depth">include header</td>
+								<td class="col_url"><a href="./inc.html" target="_blank">./inc.html</a></td>
+                                <td class="col_point">2022.11.24</td>
+								<td class="col_date">2022.11.24</td>
+								<td class="col_state">
+									<span class="complete">완료</span>
+									<!-- [D] 상태별 클래스명 stand:대기, working:작업중, complete:완료 modify:수정 -->
+								</td>
+								<td class="col_worker">박선후</td>
+								<td class="col_memo">
+									<strong>221124 [P] 퍼블 확인 사항</strong><br>
+									헤더 gnb nav 서식 본 파일에서 관리하고 있습니다.<br>
+									새 페이지 작성시 빈 헤더태그 마크업 후 <strong>common.js</strong> 호출하면 헤더가 적용됩니다.<br><br>
+
+									<strong>
+										- header tag 사양<br>
+										id="header"<br>
+										data-include="./inc.html"<br>
+										data-menu="index(페이지별로 개별설정 후 inc.html li tag에도 동일한 dataset 적용)"</strong><br><br>
+
+									코드 수정시에도 본 파일에서 수정하면 일괄 적용됩니다.
+                                </td>
+							</tr>
+                            <tr>
+								<td class="col_num" scope="row"></td>
+								<td class="col_1depth"></td>
+								<td class="col_2depth">include top button</td>
+								<td class="col_url"><a href="./inc_aside.html" target="_blank">./inc_aside.html</a></td>
+                                <td class="col_point">2022.12.01</td>
+								<td class="col_date">2022.12.01</td>
+								<td class="col_state">
+									<span class="complete">완료</span>
+									<!-- [D] 상태별 클래스명 stand:대기, working:작업중, complete:완료 modify:수정 -->
+								</td>
+								<td class="col_worker">박선후</td>
+								<td class="col_memo">
+									Go Top Button : 전 페이지에서 동적으로 뿌려주고 있습니다.<br>
+									헤더와 동일하게 common.js fetch 부분 참고
+                                </td>
+							</tr>
+
+
+
+
+							<!-- CSS -->
+                            <tr class="border_top">
+								<td class="col_num" scope="row"></td>
+								<td class="col_1depth">style</td>
+								<td class="col_2depth">reset.css</td>
+								<td class="col_url"><a href="./resource/style/reset.css" target="_blank">./resource/style/reset.css</a></td>
+                                <td class="col_point">2022.11.24</td>
+								<td class="col_date">2022.11.24</td>
+								<td class="col_state">
+									<span class="complete">완료</span>
+									<!-- [D] 상태별 클래스명 stand:대기, working:작업중, complete:완료 modify:수정 -->
+								</td>
+								<td class="col_worker">박선후<br>김소정</td>
+								<td class="col_memo">
+									style code reset file
+								</td>
+							</tr>
+                            <tr>
+								<td class="col_num" scope="row"></td>
+								<td class="col_1depth"></td>
+								<td class="col_2depth">style.scss</td>
+								<td class="col_url"><a href="./resource/style/style.scss" target="_blank">./resource/style/style.scss</a></td>
+                                <td class="col_point">2022.11.28</td>
+								<td class="col_date"></td>
+								<td class="col_state">
+									<span class="working">작업중</span>
+									<!-- [D] 상태별 클래스명 stand:대기, working:작업중, complete:완료 modify:수정 -->
+								</td>
+								<td class="col_worker">박선후<br>김소정</td>
+								<td class="col_memo">
+									<strong>[P] 코드 수정은 scss 파일에서만 해주십시오.</strong><br>
+								</td>
+							</tr>
+                            <tr>
+								<td class="col_num" scope="row"></td>
+								<td class="col_1depth"></td>
+								<td class="col_2depth">style.css</td>
+								<td class="col_url"><a href="./resource/style/style.css" target="_blank">./resource/style/style.css</a></td>
+                                <td class="col_point">2022.11.28</td>
+								<td class="col_date"></td>
+								<td class="col_state">
+									<span class="working">작업중</span>
+									<!-- [D] 상태별 클래스명 stand:대기, working:작업중, complete:완료 modify:수정 -->
+								</td>
+								<td class="col_worker">박선후<br>김소정</td>
+								<td class="col_memo">
+									scss format 연동 파일
+								</td>
+							</tr>
+                            <tr>
+								<td class="col_num" scope="row"></td>
+								<td class="col_1depth"></td>
+								<td class="col_2depth">style.css.map</td>
+								<td class="col_url"><a href="./resource/style/style.css.map" target="_blank">./resource/style/style.css.map</a></td>
+                                <td class="col_point">2022.11.28</td>
+								<td class="col_date"></td>
+								<td class="col_state">
+									<span class="working">작업중</span>
+									<!-- [D] 상태별 클래스명 stand:대기, working:작업중, complete:완료 modify:수정 -->
+								</td>
+								<td class="col_worker">박선후<br>김소정</td>
+								<td class="col_memo">
+									scss -> css 맵핑 파일
+								</td>
+							</tr>
+
+
+
+
+
+							<!-- JavaScript -->
+                            <tr class="border_top">
+								<td class="col_num" scope="row"></td>
+								<td class="col_1depth">JS</td>
+								<td class="col_2depth">common.js</td>
+								<td class="col_url"><a href="./resource/js/common.js" target="_blank">./resource/js/common.js</a></td>
+                                <td class="col_point">2022.11.24</td>
+								<td class="col_date"></td>
+								<td class="col_state">
+									<span class="working">작업중</span>
+									<!-- [D] 상태별 클래스명 stand:대기, working:작업중, complete:완료 modify:수정 -->
+								</td>
+								<td class="col_worker">박선후</td>
+								<td class="col_memo"></td>
+							</tr>
+                            
+
+
+
+							<!-- SmartEditor -->
+                            <tr style="display:none;">
+								<td class="col_num" scope="row"></td>
+								<td class="col_1depth">SmartEditor</td>
+								<td class="col_2depth">스마트에디터 리소스</td>
+								<td class="col_url"><a href="./resource/smartEditor/" target="_blank">./resource/smartEditor/</a></td>
+                                <td class="col_point">2022.11.10</td>
+								<td class="col_date"></td>
+								<td class="col_state">
+									<span class="working">작업중</span>
+									<!-- [D] 상태별 클래스명 stand:대기, working:작업중, complete:완료 modify:수정 -->
+								</td>
+								<td class="col_worker">박선후</td>
+								<td class="col_memo"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- //.stn_cont -->
+			</div>
+			<!-- //.section -->
+		</div>
+		<!-- //#contents -->
+		<aside class="btn_top">
+			TOP
+		</aside>
+		<script>
+			const btnTop = document.querySelector(".btn_top");
+			window.addEventListener("scroll",()=>{
+				let scrHeight = window.pageYOffset || document.documentElement.scrollTop;
+				if( scrHeight > 100 ){
+					btnTop.classList.add("on");
+				} else {
+					btnTop.classList.remove("on");
+				}
+			})
+			btnTop.addEventListener("click",()=>{
+				window.scrollTo({ top: "0", behavior: "smooth" });
+			});
+		</script>
+	</div>
+	<!-- //#container -->
+	<hr>
+
+	<!-- #footer -->
+	<div id="footer">
+		<div class="cyrt">
+			<span>&copy; <a href="https://www.phoenixdarts.com/kr/main" target="_blank" title="피닉스다트 공식 홈페이지">PHOENIXDARTS.</a> All rights reserved.</span>
+		</div>
+	</div>
+	<!-- //#footer -->
+</div>
+<!-- //#wrap -->
+<!-- page Landing -->
+</body>
+</html>
