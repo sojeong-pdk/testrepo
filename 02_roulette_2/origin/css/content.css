@@ -1,0 +1,39 @@
+.wrapper{margin-top: 30px; text-align: center}
+.wrapper:after{content: ''; display: block; position: absolute; top:25px; left:50%; margin-left:-17px; width:0; height: 0; border-left:15px solid transparent; border-right:15px solid transparent; border-top: 25px solid #f89c4d}
+
+.roulette {width: 300px;height: 300px;margin:0 auto;background: url('../img/img-roullete.png') no-repeat;background-size: 100% auto; position: relative;}
+
+
+.trigger {margin-top: 20px;font-size: 20px;border-radius: 3px;background:#fd9c2a;color:#fff;width:100px;height:40px;line-height: 40px;border:0;cursor: pointer;}
+
+.roulette.loop_1 {animation: rotation_1 5s ease-in-out forwards;}
+.roulette.loop_2 {animation: rotation_2 5s ease-in-out forwards;}
+.roulette.loop_3 {animation: rotation_3 5s ease-in-out forwards;}
+.roulette.loop_4 {animation: rotation_4 5s ease-in-out forwards;}
+.roulette.loop_5 {animation: rotation_5 5s ease-in-out forwards;}
+.roulette.loop_6 {animation: rotation_6 5s ease-in-out forwards;}
+
+@keyframes rotation_1 {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(7200deg);}
+}
+@keyframes rotation_2 {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(7260deg);}
+}
+@keyframes rotation_3 {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(7320deg);}
+}
+@keyframes rotation_4 {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(7380deg);}
+}
+@keyframes rotation_5 {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(7440deg);}
+}
+@keyframes rotation_6 {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(7500deg);}
+}

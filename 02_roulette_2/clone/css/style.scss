@@ -1,0 +1,61 @@
+@charset "utf-8";
+// style.scss
+
+// reset
+html{ font-size: 62.5%; }
+body{ margin: 0; padding: 0; background-color: #fff; line-height: 1; }
+button{ padding: 0; border: 0; font-family: inherit; }
+
+// mixin
+// @mixin keyframes($) {
+//   @keyframes rotation {
+//     from{ transform: rotate(0); }
+//     to{ transform: rotate(7200 + #{$angle} + 'deg'); }
+//   }
+// }
+
+// variable
+$c_orange: #f89c4d;
+$length: 6;
+$angle: 360 / $length;
+$random: random($length);
+// @debug $angle * $random;
+
+// .roulette
+.roulette{
+  position: relative;
+  width: 30rem; height: 30rem;
+  margin: 0 auto;
+  &::after{ /* markers */
+    content: '';
+    position: absolute;
+    top: -1rem; left: 50%;
+    border: 1.5rem solid transparent;
+    border-top: 4rem solid $c_orange;
+    transform: translateX(-50%);
+  }
+  &__img{
+    width: 100%; height: 100%;
+    background: url(../img/img_roullete.png) no-repeat;
+    background-size: 100% auto;
+    transition: all 5s;
+  }
+  &__trigger{
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 6rem; height: 6rem;
+    background-color: $c_orange;
+    border: 0.4rem solid #B68957;
+    border-radius: 50%;
+    font-weight: 700;
+    color: #45321D;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// animation
+.loop{ transform: rotate( 7200 + ($angle * $random) + deg); }
+// .loop{ animation: rotation 5s ease-in-out forwards; }
+
+
+

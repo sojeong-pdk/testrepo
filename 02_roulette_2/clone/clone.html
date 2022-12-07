@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>roulette clone</title>
+  <script src="js/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+  <style>
+    /* reset */
+    html{ font-size: 62.5%; }
+    body{ margin: 0; padding: 0; background-color: #fff; line-height: 1; }
+    button{ padding: 0; border: 0; font-family: inherit; cursor: pointer; }
+
+    /* .roulette */
+    .roulette_wrap{ position: relative; margin-top: 3rem; text-align: center; }
+    .roulette_wrap::after{ content: ''; display: block; position: absolute; top: -0.5rem; left: 50%; margin-left: -1.7rem; border: 1.5rem solid transparent; border-top: 25px solid #fd9c2a; border-bottom: 0; } /* markers */
+    .roulette{ width: 30rem; height: 30rem; margin: 0 auto; background: url(./img/img_roullete.png) no-repeat; background-size: 100% auto; }
+    .trigger{ width: 10rem; height: 4rem; margin-top: 2rem; border-radius: 0.3rem; background-color: #fd9c2a; font-size: 2rem; color: #fff; }
+
+    /* ani */
+    .loop_1{ animation: rotation_1 5s ease-in-out forwards; }
+    .loop_2{ animation: rotation_2 5s ease-in-out forwards; }
+    .loop_3{ animation: rotation_3 5s ease-in-out forwards; }
+    .loop_4{ animation: rotation_4 5s ease-in-out forwards; }
+    .loop_5{ animation: rotation_5 5s ease-in-out forwards; }
+    .loop_6{ animation: rotation_6 5s ease-in-out forwards; }
+
+    @keyframes rotation_1 {
+      from{ transform: rotate(0deg); }
+      to{ transform: rotate(7200deg); } /* 0 */
+    }
+    @keyframes rotation_2 {
+      from{ transform: rotate(0deg); }
+      to{ transform: rotate(7260deg); } /* 60 */
+    }
+    @keyframes rotation_3 {
+      from{ transform: rotate(0deg); }
+      to{ transform: rotate(7320deg); } /* 120 */
+    }
+    @keyframes rotation_4 {
+      from{ transform: rotate(0deg); }
+      to{ transform: rotate(7380deg); } /* 180 */
+    }
+    @keyframes rotation_5 {
+      from{ transform: rotate(0deg); }
+      to{ transform: rotate(7440deg); } /* 240 */
+    }
+    @keyframes rotation_6 {
+      from{ transform: rotate(0deg); }
+      to{ transform: rotate(7500deg); } /* 300 */
+    }
+  </style>
+
+  <div class="roulette_wrap">
+    <div class="roulette"></div>
+    <button class="trigger">뽑기</button>
+  </div>
+
+  <script>
+    'use strict';
+
+    // 1. 버튼을 클릭하면 룰렛이 돎 > click event > roulette add animation 
+    // 2. 랜덤하게 당첨 > random > rotate 
+    // 3. 룰렛 돌고 난 후 당첨 결과 확인 > roulette animation end > alert
+
+    var SELECT_NUM;
+    var TXT_ARR = [
+      "모바일전용 10%할인쿠폰",
+      "1000포인트",
+      "사은품 쿠폰",
+      "5%할인쿠폰",
+      "5000포인트",
+      "무료배송쿠폰",
+    ]
+    $(function() {
+      $('.trigger').on('click', function() {
+        SELECT_NUM = Math.floor(Math.random() * 6); // 0~5
+        $('.roulette').addClass('loop_' + (SELECT_NUM + 1));  // loop_1~6
+        $('.roulette').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {  // 애니메이션 누적되므로 .one()를 통해 한번만 실행되게
+          $(this).removeClass('loop_' + (SELECT_NUM + 1));
+          console.log(TXT_ARR[SELECT_NUM]);
+        });
+
+        // * JQuery .one(): 최초 1회만 이벤트를 실행하고 이후 이벤트 동작을 하지 않습니다. 사용방법은 .on()과 동일.
+        //    참고URL: https://proni.tistory.com/168
+        // * Element: animationend event: css 애니메이션이 끝나고 이벤트 시작됩니다. js로 DOM에 접근하여 animation 이벤트 속성 넣어줌(수신) 
+        //    참고URL: https://homzzang.com/b/js-1308
+
+        // * 애니메이션 큐
+        //    큐(Queue): 순차적으로 이벤트가 누적되어 누적된 순서대로 처리되는 자료구조
+        //     참고URL: https://webclub.tistory.com/461
+      });
+    });
+  </script>
+</body>
+</html>
